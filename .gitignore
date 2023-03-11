@@ -24,4 +24,7 @@ yarn-error.log*
 
 /26_mern_calendar
 
+.env.development
+.env.production
+
 

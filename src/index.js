@@ -4,6 +4,8 @@ import CalendarApp from './CalendarApp';
 
 import './styles.css'
 
+console.log(process.env)
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
