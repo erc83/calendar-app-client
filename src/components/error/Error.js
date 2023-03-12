@@ -5,7 +5,7 @@ const Error = () => {
   return (
     <div>
         <h1>La Ruta que estas consultando no existe</h1>
-        <Link to="//login">Ir a Loguearse</Link>
+        <Link to="/login">Ir a Loguearse</Link>
     </div>
   )
 }
