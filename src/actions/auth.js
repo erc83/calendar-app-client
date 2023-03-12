@@ -1,11 +1,34 @@
+import Swal from "sweetalert2";
+import { fetchSinToken } from "../components/helpers/fetch"
+import { types } from "../types/types";
 
 
 export const startLogin = ( email, password) => {
-    return async () => {
+    // el thunk dispone el dispatch
+    return async ( dispatch) => {
 
-        console.log( email, password )
+        const resp = await fetchSinToken( 'auth', { email, password }, 'POST' );
+        const body = await resp.json()
+
+        if( body.ok ) {
+            localStorage.setItem( 'token', body.token );
+            localStorage.setItem( 'token-init-date', new Date().getTime() );
+            
+            dispatch( login({
+                uid: body.uid,
+                name: body.name
+            }) )
+        
+        } else {
+            Swal.fire('Error', body.msg, 'error'); 
+        }
 
     }
 }
+
+const login = ( user ) => ({
+    type: types.authLogin,
+    payload: user
+})
 
 
