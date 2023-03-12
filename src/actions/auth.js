@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import { fetchSinToken } from "../components/helpers/fetch"
+import { fetchConToken, fetchSinToken } from "../components/helpers/fetch"
 import { types } from "../types/types";
 
 
@@ -47,6 +47,38 @@ export const startRegister = ( email, password, name ) => {
         }
     }
 }
+
+
+// necesito disparar la accion que requiere el token     http://localhost:4000/api/auth/renovar    // 
+export const startChecking = () => {   
+
+        return async (dispatch) => {
+            const resp = await fetchConToken( 'auth/renovar' ); // no requiere nada, no tiene body y por defecto es un GET
+            const body = await resp.json()
+
+            console.log(body)
+    
+            //console.log( body, "viendo pruba" )
+    
+            if( body.ok ) {
+                localStorage.setItem( 'token', body.token );
+                localStorage.setItem( 'token-init-date', new Date().getTime() );
+                
+                dispatch( login({     //aqui tenemos
+                    uid: body.uid,
+                    name: body.name
+                }) )     
+            } else {
+                dispatch( checkingFinish() ); 
+            }
+        }
+}
+
+const checkingFinish = () => ({
+    type: types.authChekingFinish
+})
+
+
 
 const login = ( user ) => ({
     type: types.authLogin,
