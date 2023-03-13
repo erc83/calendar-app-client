@@ -27,6 +27,12 @@ export const authReducer = ( state = initialState, action  ) => {
                 checking: false
             }
 
+        case types.authLogout:   // aqui no retorno todo el state poeque quiero dejarlo lo mas puro posible
+            return {
+                checking: false
+            }
+        
+
         default:
             return state; 
     }
