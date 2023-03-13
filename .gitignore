@@ -23,6 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 /26_mern_calendar
+/27_mern_crud_eventos
 
 .env.development
 .env.production

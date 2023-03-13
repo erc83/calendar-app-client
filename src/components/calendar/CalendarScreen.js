@@ -3,7 +3,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment'
 import { useDispatch, useSelector } from "react-redux";          
 import { uiOpenModal } from '../../actions/ui';     
-import { eventSetActive, eventClearActiveEvent, eventAddNew } from '../../actions/eventsCalendar';
+import { eventSetActive, eventClearActiveEvent  /* eventStartAddNew */ } from '../../actions/eventsCalendar';
 
 import Navbar from '../ui/Navbar'
 import { messages } from '../helpers/calendar-messages-es'
@@ -49,10 +49,11 @@ const CalendarScreen = () => {
     if( activeEvent ){
       dispatch( eventClearActiveEvent() ); 
     
-    }else {
-      dispatch( eventAddNew( ))
-      dispatch( uiOpenModal() )
     }
+    /* else {
+      // dispatch( eventStartAddNew( ))
+      dispatch( uiOpenModal() )
+    } */
   }
 
   const eventStyleGetter = ( event, start, end, isSelected ) => {
