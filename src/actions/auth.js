@@ -55,8 +55,6 @@ export const startChecking = () => {
         return async (dispatch) => {
             const resp = await fetchConToken( 'auth/renovar' ); // no requiere nada, no tiene body y por defecto es un GET
             const body = await resp.json()
-
-            console.log(body)
     
             //console.log( body, "viendo pruba" )
     

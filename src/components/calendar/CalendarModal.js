@@ -6,7 +6,7 @@ import moment from 'moment';
 import Modal from 'react-modal';
 import DateTimePicker from 'react-datetime-picker';
 import Swal from 'sweetalert2'                   
-import { eventClearActiveEvent, eventStartAddNew, eventUpdated } from '../../actions/eventsCalendar';
+import { eventClearActiveEvent, eventStartAddNew, /* eventUpdated */ eventStartUpdate } from '../../actions/eventsCalendar';
 
 const customStyles = {  
     content: {
@@ -118,7 +118,8 @@ export const CalendarModal = ( ) => {
       
 
       if ( activeEvent ){
-        dispatch( eventUpdated ( formValues ) )   // si existe el event lo actualiza 
+        //dispatch( eventUpdated ( formValues ) )   // si existe el event lo actualiza 
+        dispatch( eventStartUpdate ( formValues ) )   // si existe el event lo actualiza 
       }else{
         dispatch( eventStartAddNew( formValues ) );  // queda mucho mas sencillo
       }
